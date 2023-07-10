@@ -1,95 +1,246 @@
-# Obsidian Sample Plugin
+## Badges
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+### Introduction
 
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
+A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://github.com/obsidianmd) which acts similarly to a key-value store(database) for querying via default search or [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin.
 
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
+- [Usage](#usage)
+	- [Github styled badges](#Github%20styled%20badges)
+	- [Plain-text](#Plain-text)
+	- [custom](#custom)
+- [Installation](#Installation)
+- [CSS styles](#CSS%20styles)
+- [Dataview plugin](#Dataview%20plugin)
+- [Development](#Development)
+- [Notes](#Notes)
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+> Download: [demo markdown file](assets/badges-demo.md)
 
-## First time developing plugins?
+### Usage
 
-Quick starting guide for new plugin devs:
+###### default syntax
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+```markdown
+`[!!KEY:VAL]`
+```
 
-## Releasing new releases
+| syntax | details                         |
+| ------ | ------------------------------- |
+| `KEY`  | the type and name of the `ICON` |
+| `VAL`  | the value and text displayed    |
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+> ⚠️ Note:
+> the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+###### example
 
-## Adding your plugin to the community plugin list
+```markdown
+`[!!note:note]`
+`[!!info:info]`
+`[!!todo:todo]`
+...
+`[!!cite:cite]`
+```
 
-- Check https://github.com/obsidianmd/obsidian-releases/blob/master/plugin-review.md
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+###### results
 
-## How to use
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709144540.png)
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709144545.png)
 
-- Clone this repo.
-- `npm i` or `yarn` to install dependencies
-- `npm run dev` to start compilation in watch mode.
+###### example
 
-## Manually installing the plugin
+```markdown
+`[!!emergency: emergency]`
+`[!!prohibit: prohibit]`
+`[!!stop:stop]`
+…
+`[!!reward: reward]`
+`[!!vault: vault]`
+```
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+###### results
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709170950.png)
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709170943.png)
 
-## Funding URL
 
-You can include funding URLs where people who use your plugin can financially support it.
+#### Github styled badges
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+###### syntax
 
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
+```markdown
+`[!!|GHX>KEY:VAL]`
+```
+
+| syntax          | details                                                                            |
+| --------------- | ---------------------------------------------------------------------------------- |
+| <code>\|</code> | start pipe symbol                                                                  |
+| `GHX`           | Github style, either `ghb` for the blue style or `ghs` for the green success style |
+| `>`             | greater than symbol (delimiter)                                                    |
+| `KEY:VAL`       | `KEY` is the type or label, `VAL` is the value text displayed. e.g. `release:1.0.0` |
+
+> ⚠️ Note:
+> the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax
+
+###### example
+
+```markdown
+`[!!|ghb>release:1.2.1]`
+`[!!|ghb>issues:2]`
+`[!!|ghb>open issues:0]`
+`[!!|ghb>closed issues:2]`
+`[!!|ghb>contributors:3]`
+`[!!|ghb>license:MIT]`
+`[!!|ghs>checks:success]`
+`[!!|ghs>build:success]`
+```
+
+###### results
+
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709171043.png)
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709171053.png)
+
+
+### Plain-text
+
+###### syntax
+
+```markdown
+`[!!|KEY:VAL]`
+```
+
+| syntax          | details                               |
+| --------------- | ------------------------------------- |
+| <code>\|</code> | start pipe symbol                     |
+| `KEY:VAL`       | `KEY` is the type, `VAL` is the value |
+
+###### example
+
+```markdown
+`[!!|foo:bar]`
+```
+
+###### results
+
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709171707.png)
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709171713.png)
+
+
+### custom
+
+###### syntax
+
+```markdown
+`[!!|ICON|KEY:VAL|COLOR-RGB]`
+```
+
+| syntax          | details                                                                                                                |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| <code>\|</code> | start pipe symbol                                                                                                      |
+| `ICON`          | name of icon. e.g. `lucide-dice`                                                                                        |
+| <code>\|</code> | pipe symbol                                                                                                            |
+| `KEY:VAL`       | `KEY` is the type or label, `VAL` is the value text displayed. e.g. `release:1.0.0`                                     |
+| <code>\|</code> | pipe symbol                                                                                                            |
+| `COLOR-RGB`     | 3 (R.G.B.) numeric (0-255) values, separated by commas. e.g. `144,144,144` or CSS variable e.g. `var(--color-red-rgb)` |
+
+> ⚠️ Note:
+> the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax
+
+###### example
+```markdown
+`[!!|message-square|comment:edited by j.d.|var(--color-cyan-rgb)]`
+`[!!|dice|roll:eleven|120,82,238]`
+`[!!|gem|mineral:emerald|var(--my-custom-rgb)]`
+`[!!|apple|fruit:snack|var(--color-red-rgb)]`
+`[!!|brain|brain:pkm|var(--color-purple-rgb)]`
+`[!!|sun|weather:sunny|var(--color-yellow-rgb)]`
+`[!!|cloudy|weather:cloudy|var(--mono-rgb-100)]`
+`[!!|sunset|weather:8.44pm|var(--color-orange-rgb)]`
+`[!!|dumbbell|reps:3 sets of 50|var(--mono-rgb-00)]`
+`[!!|gift|event:wedding|var(--color-blue-rgb)]`
+`[!!|plus-square|credit:$100|var(--color-green-rgb)]`
+`[!!|minus-square|debit:$10|var(--color-pink-rgb)]`
+```
+
+###### results
+
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709171541.png)
+![](assets/Badges-demo-Obsidian-v1.3.7-20230709171534.png)
+
+### Installation
+
+From Obsidian's settings or preferences:
+
+1. ~~Community Plugins > Browse~~ pending official review
+2. ~~Search for "Badges"~~
+
+or:
+
+1. download the latest [release archive](https://github.com/gapmiss/badges/releases/download/1.0.0/badges-v1.0.0.zip)
+2. uncompress the downloaded archive
+3. move the `badges` folder to `/path/to/vault/.obsidian/plugins/` 
+4.  Settings > Community plugins > reload **Installed plugins**
+5.  enable plugin
+
+or:
+
+1.  download `main.js`, `manifest.json` & `styles.css`
+2.  create a new folder `/path/to/vault/.obsidian/plugins/badges`
+3.  move all 3 files to `/path/to/vault/.obsidian/plugins/badges`
+4.  Settings > Community plugins > reload **Installed plugins**
+5.  enable plugin
+
+### CSS styles
+
+Custom `CSS` styles can be applied via CSS snippets. All colors and styles can be over-written just the same. See [CSS snippets - Obsidian Help](https://help.obsidian.md/Extending+Obsidian/CSS+snippets)
+
+##### variables
+
+```css
+body {
+	/* border */
+	--inline-badge-border-color: transparent;
+	--inline-badge-border-radius: var(--radius-s);
+	--inline-badge-border: 1px solid var(--inline-badge-border-color);
+	/* example custom color */
+	--my-custom-rgb: var(--color-green-rgb);
+}
+/* example CSS customization */
+.inline-badge[data-inline-badge^="vault"] {
+	--badge-color: var(--color-green-rgb);
+	color: rgba(var(--badge-color), .88);
+	background-color: rgba(var(--badge-color),.22);
 }
 ```
 
-If you have multiple URLs, you can also do:
+### Dataview plugin
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
+View and copy example dataview queries: [badges-dataview](assets/badges-dataview.md)
+
+### Development
+
+###### Clone this repo
+
+```bash
+cd /path/to/vault/.obsidian/plugins
+git clone https://github.com/gapmiss/badges.git
+cd badges
 ```
 
-## API Documentation
+###### Install packages and run
 
-See https://github.com/obsidianmd/obsidian-api
+```bash
+npm i
+npm run dev
+```
+
+###### Enable plugin
+
+1.  open `Settings` → `Community plugins`
+2.  enable the `Badges` plugin.
+
+### Notes
+
+[Lucide](https://github.com/lucide-icons/lucide) Icons: https://lucide.dev
+Lucide Icons LICENSE: https://lucide.dev/license
+
