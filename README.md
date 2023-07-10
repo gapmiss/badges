@@ -45,6 +45,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 ###### results
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709144540.png)
+
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709144545.png)
 
 ###### example
@@ -61,6 +62,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 ###### results
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709170950.png)
+
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709170943.png)
 
 
@@ -98,6 +100,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 ###### results
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171043.png)
+
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171053.png)
 
 
@@ -123,6 +126,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 ###### results
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171707.png)
+
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171713.png)
 
 
@@ -192,7 +196,9 @@ or:
 
 ### CSS
 
-Custom `CSS` styles can be applied via CSS snippets. All colors and styles can be over-written just the same. See [CSS snippets - Obsidian Help](https://help.obsidian.md/Extending+Obsidian/CSS+snippets)
+Custom `CSS` styles can be applied via CSS snippets. All colors and styles can be over-written just the same.
+
+See [CSS snippets - Obsidian Help](https://help.obsidian.md/Extending+Obsidian/CSS+snippets)
 
 ##### variables
 
@@ -242,5 +248,5 @@ npm run dev
 ### Notes
 
 [Lucide](https://github.com/lucide-icons/lucide) Icons: https://lucide.dev
-Lucide Icons LICENSE: https://lucide.dev/license
 
+Lucide Icons LICENSE: https://lucide.dev/license
