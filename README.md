@@ -5,12 +5,12 @@
 A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://github.com/obsidianmd) which acts similarly to a key-value store(database) for querying via default search or [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin.
 
 - [Usage](#usage)
-	- [Github styled badges](#Github%20styled%20badges)
+	- [Github styled badges](#Github)
 	- [Plain-text](#Plain-text)
 	- [custom](#custom)
 - [Installation](#Installation)
-- [CSS styles](#CSS%20styles)
-- [Dataview plugin](#Dataview%20plugin)
+- [CSS styles](#CSS)
+- [Dataview plugin](#Dataview)
 - [Development](#Development)
 - [Notes](#Notes)
 
@@ -64,7 +64,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709170943.png)
 
 
-#### Github styled badges
+#### Github
 
 ###### syntax
 
@@ -190,7 +190,7 @@ or:
 4.  Settings > Community plugins > reload **Installed plugins**
 5.  enable plugin
 
-### CSS styles
+### CSS
 
 Custom `CSS` styles can be applied via CSS snippets. All colors and styles can be over-written just the same. See [CSS snippets - Obsidian Help](https://help.obsidian.md/Extending+Obsidian/CSS+snippets)
 
@@ -213,7 +213,7 @@ body {
 }
 ```
 
-### Dataview plugin
+### Dataview
 
 View and copy example dataview queries: [badges-dataview](assets/badges-dataview.md)
 
