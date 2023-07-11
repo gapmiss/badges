@@ -2,10 +2,8 @@ import { MarkdownPostProcessor, Plugin, setIcon, PluginManifest } from 'obsidian
 import { BADGE_TYPES } from './constants';
 
 export default class BadgesPlugin extends Plugin {
-  plugin: Plugin;
-  manifest: PluginManifest;
 
-  async onload() {		
+	async onload() {		
 		this.registerMarkdownPostProcessor(
 			buildPostProcessor()
 		);
@@ -15,6 +13,7 @@ export default class BadgesPlugin extends Plugin {
   onunload() {
 		console.log("Badges plugin unloaded");
 	}
+
 }
 
 export function buildPostProcessor(): MarkdownPostProcessor {
