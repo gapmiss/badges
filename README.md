@@ -175,8 +175,8 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 
 From Obsidian's settings or preferences:
 
-1. ~~Community Plugins > Browse~~ pending official review
-2. ~~Search for "Badges"~~
+1. Community Plugins > Browse
+2. Search for "Badges"
 
 or:
 
