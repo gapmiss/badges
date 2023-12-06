@@ -4,7 +4,6 @@
 
 A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://github.com/obsidianmd) which acts similarly to a key-value store(database) for querying via default search or [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin.
 
-- [Demo](#demo)
 - [Usage](#usage)
 	- [Github styled badges](#Github)
 	- [Plain-text](#Plain-text)
