@@ -1,5 +1,6 @@
 body {
 	--inline-badge-border-color: transparent;
+	--inline-badge-font-size: .8em;
 	--inline-badge-border-radius: var(--radius-s);
 	--inline-badge-border: 1px solid var(--inline-badge-border-color);
 	--my-custom-rgb: var(--color-green-rgb);
@@ -19,20 +20,20 @@ body {
 }
 .inline-badge .gh-type {
 	display: inline-block !important;
-	font-size: .8em;
+	font-size: var(--inline-badge-font-size);
 	padding-right: .5em;
 	padding-top: .15em;
-	color: var(--color-blue);
+	/* color: var(--color-blue); */
 }
 .inline-badge .inline-badge-extra {
 	display: inline-block !important;
-	font-size: .8em;
+	font-size: var(--inline-badge-font-size);
 	padding-inline: .5em;
 	padding-top: .15em;
 	font-family: inherit;
 }
 .inline-badge .inline-badge-icon {
-	padding: 3px;
+	padding: .3em;
 }
 .inline-badge .inline-badge-icon svg{
 	width: 14px;
@@ -44,7 +45,7 @@ body {
 }
 .inline-badge .inline-badge-title-inner {
 	display: inline-block !important;
-	font-size: .8em;
+	font-size: var(--inline-badge-font-size);
 	font-weight: inherit;
 	padding-right: 5px;
 	padding-top: 2px;

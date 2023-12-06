@@ -4,6 +4,7 @@
 
 A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://github.com/obsidianmd) which acts similarly to a key-value store(database) for querying via default search or [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin.
 
+- [Demo](#demo)
 - [Usage](#usage)
 	- [Github styled badges](#Github)
 	- [Plain-text](#Plain-text)
@@ -14,7 +15,6 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 - [Development](#Development)
 - [Notes](#Notes)
 
-> Download: [demo markdown file](assets/badges-demo.md)
 
 ### Usage
 
@@ -29,7 +29,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 | `KEY`  | the type and name of the `ICON` |
 | `VAL`  | the value and text displayed    |
 
-> ⚠️ Note:
+> [!IMPORTANT]
 > the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax
 
 ###### example
@@ -74,15 +74,12 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 `[!!|GHX>KEY:VAL]`
 ```
 
-| syntax          | details                                                                            |
-| --------------- | ---------------------------------------------------------------------------------- |
-| <code>\|</code> | start pipe symbol                                                                  |
-| `GHX`           | Github style, either `ghb` for the blue style or `ghs` for the green success style |
-| `>`             | greater than symbol (delimiter)                                                    |
+| syntax          | details                                                                             |
+| --------------- | ----------------------------------------------------------------------------------- |
+| <code>\|</code> | start pipe symbol                                                                   |
+| `GHX`           | Github style, either `ghb` for the blue style or `ghs` for the green success style  |
+| `>`             | greater than symbol (delimiter)                                                     |
 | `KEY:VAL`       | `KEY` is the type or label, `VAL` is the value text displayed. e.g. `release:1.0.0` |
-
-> ⚠️ Note:
-> the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax
 
 ###### example
 
@@ -102,7 +99,6 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171043.png)
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171053.png)
-
 
 ### Plain-text
 
@@ -129,7 +125,6 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171713.png)
 
-
 ### custom
 
 ###### syntax
@@ -138,19 +133,17 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 `[!!|ICON|KEY:VAL|COLOR-RGB]`
 ```
 
-| syntax          | details                                                                                                                |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| <code>\|</code> | start pipe symbol                                                                                                      |
-| `ICON`          | name of icon. e.g. `lucide-dice`                                                                                        |
-| <code>\|</code> | pipe symbol                                                                                                            |
-| `KEY:VAL`       | `KEY` is the type or label, `VAL` is the value text displayed. e.g. `release:1.0.0`                                     |
-| <code>\|</code> | pipe symbol                                                                                                            |
-| `COLOR-RGB`     | 3 (R.G.B.) numeric (0-255) values, separated by commas. e.g. `144,144,144` or CSS variable e.g. `var(--color-red-rgb)` |
-
-> ⚠️ Note:
-> the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax
+| syntax                                               | details                                                                                                                |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| <code>\|</code>                                      | start pipe symbol                                                                                                      |
+| `ICON`                                               | name of icon. e.g. `lucide-dice`                                                                                       |
+| <code>\|</code>                                      | pipe symbol                                                                                                            |
+| `KEY:VAL`                                            | `KEY` is the type or label, `VAL` is the value text displayed. e.g. `release:1.0.0`                                    |
+| <code>\|</code>                                      | pipe symbol                                                                                                            |
+| `COLOR-RGB` <br>(optional, defaults to currentColor) | 3 (R.G.B.) numeric (0-255) values, separated by commas. e.g. `144,144,144` or CSS variable e.g. `var(--color-red-rgb)` |
 
 ###### example
+
 ```markdown
 `[!!|message-square|comment:edited by j.d.|var(--color-cyan-rgb)]`
 `[!!|dice|roll:eleven|120,82,238]`
@@ -175,12 +168,16 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 
 From Obsidian's settings or preferences:
 
-1. ~~Community Plugins > Browse~~ pending official review
-2. ~~Search for "Badges"~~
+1. [Open in Obsidian.md](obsidian://show-plugin?id=badges)
 
 or:
 
-1. download the latest [release archive](https://github.com/gapmiss/badges/releases/download/1.0.0/badges-v1.0.0.zip)
+1. Community Plugins > Browse
+2. Search for "Badges"
+
+Manually:
+
+1. download the latest [release archive](https://github.com/gapmiss/badges/releases/download/1.1.0/badges-v1.1.0.zip)
 2. uncompress the downloaded archive
 3. move the `badges` folder to `/path/to/vault/.obsidian/plugins/` 
 4.  Settings > Community plugins > reload **Installed plugins**
@@ -213,7 +210,7 @@ body {
 }
 /* example CSS customization */
 .inline-badge[data-inline-badge^="vault"] {
-	--badge-color: var(--color-green-rgb);
+	--badge-color: var(--my-custom-rgb);
 	color: rgba(var(--badge-color), .88);
 	background-color: rgba(var(--badge-color),.22);
 }
@@ -246,6 +243,8 @@ npm run dev
 2.  enable the `Badges` plugin.
 
 ### Notes
+
+Thanks to [Markdown Furigana Plugin](https://github.com/steven-kraft/obsidian-markdown-furigana) as an example implementation of Live Preview.
 
 [Lucide](https://github.com/lucide-icons/lucide) Icons: https://lucide.dev
 
