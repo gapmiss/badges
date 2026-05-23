@@ -1,6 +1,6 @@
 {
 	"name": "badges",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Badges for Obsidian (https://obsidian.md)",
 	"main": "main.js",
 	"scripts": {
