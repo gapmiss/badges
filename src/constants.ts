@@ -1,4 +1,4 @@
-export const BADGE_TYPES:any[] = [
+export const BADGE_TYPES: [string, string, string][] = [
 	["note", 'Note', 'lucide-pencil'],
 	["info", 'Info', 'lucide-info'],
 	["todo", 'Todo', 'lucide-check-circle-2'],

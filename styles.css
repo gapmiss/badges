@@ -19,14 +19,13 @@ body {
 	content: ':';
 }
 .inline-badge .gh-type {
-	display: inline-block !important;
+	display: inline-block;
 	font-size: var(--inline-badge-font-size);
 	padding-right: .5em;
 	padding-top: .15em;
-	/* color: var(--color-blue); */
 }
 .inline-badge .inline-badge-extra {
-	display: inline-block !important;
+	display: inline-block;
 	font-size: var(--inline-badge-font-size);
 	padding-inline: .5em;
 	padding-top: .15em;
@@ -41,10 +40,10 @@ body {
 }
 .inline-badge .inline-badge-extra,
 .inline-badge .inline-badge-icon {
-	display: inline-flex !important;
+	display: inline-flex;
 }
 .inline-badge .inline-badge-title-inner {
-	display: inline-block !important;
+	display: inline-block;
 	font-size: var(--inline-badge-font-size);
 	font-weight: inherit;
 	padding-right: 5px;
@@ -390,9 +389,8 @@ body {
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
-/* Github */
 .inline-badge[data-inline-badge="github"] .gh-type {
-	color: var(--color-blue-rgb) !important;
+	color: rgb(var(--color-blue-rgb));
 }
 .inline-badge[data-inline-badge="github"] .inline-badge-title-inner {
 	color:var(--text-normal);
@@ -402,9 +400,8 @@ body {
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
-/* Github SUCCESS */
 .inline-badge[data-inline-badge^="github-success"] .gh-type {
-	color: var(--color-green-rgb) !important;
+	color: rgb(var(--color-green-rgb));
 }
 .inline-badge[data-inline-badge^="github-success"] .inline-badge-title-inner {
 	color:var(--text-normal);
