@@ -29,6 +29,16 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 | `KEY`  | the type and name of the `ICON` |
 | `VAL`  | the value and text displayed    |
 
+###### shorthand syntax
+
+For built-in badge types, you can omit the value and colon:
+
+```markdown
+`[!!KEY]`
+```
+
+For example, `[!!success]` displays as "Success" with a checkmark icon. This works for all types defined in [constants.ts](https://github.com/gapmiss/badges/blob/master/src/constants.ts).
+
 > [!TIP]
 > In addition to the built-in badge types (note, info, success, etc.), you can use any [Lucide icon](https://lucide.dev/icons/) name as the `KEY`. For example: `[!!rocket:launched]` or `[!!heart:favorite]`.
 

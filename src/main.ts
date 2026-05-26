@@ -145,15 +145,23 @@ function buildBadge(text: string): HTMLSpanElement {
     return newEl;
   }
   const parts = content.split(':');
-  if (parts.length < 2) {
-    newEl.setText("❌ Badges syntax error");
-    newEl.setAttr("style", "color:var(--text-error)")
-    return newEl;
-  }
   let badgeType = parts[0].trim();
+  let badgeContent: string;
+  // Support shorthand syntax for known types: [!!success] instead of [!!success:Success]
+  if (parts.length < 2) {
+    const knownType = BADGE_TYPES.find((el) => el[0] === badgeType.toLowerCase());
+    if (knownType) {
+      badgeContent = knownType[1];
+    } else {
+      newEl.setText("❌ Badges syntax error");
+      newEl.setAttr("style", "color:var(--text-error)")
+      return newEl;
+    }
+  } else {
+    badgeContent = parts[1].trim();
+  }
   const extras = badgeType.split("|");
   const hasExtra = extras.length > 1;
-  const badgeContent = parts[1].trim();
   if (extras.length == 3) {
     iconEl.addClass("inline-badge-icon");
     attrType = 'customized';
