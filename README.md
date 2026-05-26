@@ -155,6 +155,16 @@ For example, `[!!success]` displays as "Success" with a checkmark icon. This wor
 | <code>\|</code>                                      | pipe symbol                                                                                                            |
 | `COLOR-RGB` <br>(optional, defaults to currentColor) | 3 (R.G.B.) numeric (0-255) values, separated by commas. e.g. `144,144,144` or CSS variable e.g. `var(--color-red-rgb)` |
 
+> [!NOTE]
+> The `KEY` is used for the aria-label (accessibility) and is not displayed visually. Only the `VAL` text is shown. To display a label, include it in the `VAL`:
+> ```markdown
+> `[!!|tag|release:Release 1.2.1]`
+> ```
+> or simply:
+> ```markdown
+> `[!!|tag|:Release 1.2.1]`
+> ```
+
 ###### example
 
 ```markdown
