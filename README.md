@@ -29,6 +29,9 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 | `KEY`  | the type and name of the `ICON` |
 | `VAL`  | the value and text displayed    |
 
+> [!TIP]
+> In addition to the built-in badge types (note, info, success, etc.), you can use any [Lucide icon](https://lucide.dev/icons/) name as the `KEY`. For example: `[!!rocket:launched]` or `[!!heart:favorite]`.
+
 > [!IMPORTANT]
 > the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax. See [Usage in tables](#usage-in-tables) for using badges inside Markdown tables.
 

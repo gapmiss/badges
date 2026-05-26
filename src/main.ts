@@ -197,12 +197,13 @@ function buildBadge(text: string): HTMLSpanElement {
     } else {
       iconEl.addClass("inline-badge-icon");
       attrType = badgeType.trim();
-      BADGE_TYPES.forEach((el) => {
-        if (el[0] === badgeType.toLowerCase() && el[2].length > 0) {
-          setIcon(iconEl, el[2]);
-          iconEl.setAttr("aria-label", badgeType.trim());
-        }
-      });
+      const knownType = BADGE_TYPES.find((el) => el[0] === badgeType.toLowerCase() && el[2].length > 0);
+      if (knownType) {
+        setIcon(iconEl, knownType[2]);
+      } else {
+        setIcon(iconEl, badgeType.trim());
+      }
+      iconEl.setAttr("aria-label", badgeType.trim());
     }
     titleEl.addClass("inline-badge-title-inner");
     titleEl.setText(badgeContent);
