@@ -149,7 +149,7 @@ For example, `[!!success]` displays as "Success" with a checkmark icon. This wor
 | syntax                                               | details                                                                                                                |
 | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | <code>\|</code>                                      | start pipe symbol                                                                                                      |
-| `ICON`                                               | name of icon. e.g. `lucide-dice`                                                                                       |
+| `ICON`                                               | [Lucide icon](https://lucide.dev/icons/) name. e.g. `dice` or `lucide-dice`                                            |
 | <code>\|</code>                                      | pipe symbol                                                                                                            |
 | `KEY:VAL`                                            | `KEY` is the type or label, `VAL` is the value text displayed. e.g. `release:1.0.0`                                    |
 | <code>\|</code>                                      | pipe symbol                                                                                                            |
@@ -164,6 +164,9 @@ For example, `[!!success]` displays as "Success" with a checkmark icon. This wor
 > ```markdown
 > `[!!|tag|:Release 1.2.1]`
 > ```
+
+> [!IMPORTANT]
+> Custom syntax requires actual [Lucide icon](https://lucide.dev/icons/) names (e.g., `pen-tool`, `message-square`). The built-in aliases like `notice` or `success` only work with standard syntax. For example, use `[!!|pen-tool|notice:text|color]` not `[!!|notice|notice:text|color]`.
 
 ###### example
 
