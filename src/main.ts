@@ -138,7 +138,8 @@ function buildBadge(text: string): HTMLSpanElement {
   const textEl = createSpan();
   let attrType = "";
   const part = text.substring(2);
-  const content = part.substring(part.length-1,1).trim();
+  // Support escaped pipes (\|) for use inside Markdown tables
+  const content = part.substring(part.length-1,1).trim().replace(/\\\|/g, '|');
   if (!content.length) {
     newEl.setText("Badges syntax error");
     return newEl;

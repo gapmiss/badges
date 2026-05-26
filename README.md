@@ -8,6 +8,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 	- [Github styled badges](#Github)
 	- [Plain-text](#Plain-text)
 	- [custom](#custom)
+	- [Usage in tables](#usage-in-tables)
 - [Installation](#Installation)
 - [CSS styles](#CSS)
 - [Dataview plugin](#Dataview)
@@ -29,7 +30,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 | `VAL`  | the value and text displayed    |
 
 > [!IMPORTANT]
-> the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax
+> the `VAL` cannot contain either the `|` pipe or the `:` colon symbols, as they are used as delimiters for the custom syntax. See [Usage in tables](#usage-in-tables) for using badges inside Markdown tables.
 
 ###### example
 
@@ -162,6 +163,28 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171541.png)
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171534.png)
+
+### Usage in tables
+
+When using badges inside Markdown tables, the `|` pipe character conflicts with the table cell separator. To work around this, use escaped pipes `\|` instead of `|` in your badge syntax.
+
+###### syntax
+
+```markdown
+`[!!\|ICON\|KEY:VAL\|COLOR-RGB]`
+```
+
+###### example
+
+```markdown
+| Task | Status |
+| ---- | ------ |
+| Review code | `[!!\|snowflake\|comment:On Hold\|var(--color-cyan-rgb)]` |
+| Write docs | `[!!success:Done]` |
+```
+
+> [!NOTE]
+> Badges without pipes (e.g. `[!!success:Done]`) work in tables without any changes.
 
 ### Installation
 
