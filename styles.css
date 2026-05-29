@@ -416,3 +416,13 @@ body {
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
+a:has(> .inline-badge) {
+	text-decoration: none;
+}
+a:has(> .inline-badge),
+a:has(> .inline-badge) .inline-badge {
+	cursor: pointer;
+}
+a:has(> .inline-badge):hover .inline-badge {
+	filter: brightness(1.1);
+}

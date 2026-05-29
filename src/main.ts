@@ -3,7 +3,7 @@ import { RangeSetBuilder } from "@codemirror/state"
 import { ViewPlugin, WidgetType, EditorView, ViewUpdate, Decoration, DecorationSet } from '@codemirror/view'
 import { BADGE_TYPES } from './constants';
 
-const REGEXP = /(`\[!!([^\]]*)\]`)/gm;
+const REGEXP = /(`\[!!(.*?)\]`)/gm;
 const TAGS = 'code'
 
 export default class BadgesPlugin extends Plugin {
@@ -131,7 +131,7 @@ const viewPlugin = ViewPlugin.fromClass(class {
   decorations: (v) => v.decorations,
 })
 
-function buildBadge(text: string): HTMLSpanElement {
+function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
   const newEl = createSpan();
   const iconEl = createSpan();
   const titleEl = createSpan();
@@ -139,10 +139,24 @@ function buildBadge(text: string): HTMLSpanElement {
   let attrType = "";
   const part = text.substring(2);
   // Support escaped pipes (\|) for use inside Markdown tables
-  const content = part.substring(part.length-1,1).trim().replace(/\\\|/g, '|');
+  let content = part.substring(part.length-1,1).trim().replace(/\\\|/g, '|');
   if (!content.length) {
     newEl.setText("Badges syntax error");
     return newEl;
+  }
+  // Parse optional link syntax: >>[[wikilink]] or >>https://...
+  let linkTarget: string | null = null;
+  let isWikilink = false;
+  const linkMatch = content.match(/>>(\[\[.+?\]\]|.+)$/);
+  if (linkMatch) {
+    const rawLink = linkMatch[1].trim();
+    if (rawLink.startsWith('[[') && rawLink.endsWith(']]')) {
+      linkTarget = rawLink.slice(2, -2);
+      isWikilink = true;
+    } else {
+      linkTarget = rawLink;
+    }
+    content = content.slice(0, content.lastIndexOf('>>')).trim();
   }
   const parts = content.split(':');
   let badgeType = parts[0].trim();
@@ -224,6 +238,25 @@ function buildBadge(text: string): HTMLSpanElement {
       newEl.appendChild(textEl);
     }
     newEl.appendChild(titleEl);
+  }
+  // Wrap in anchor if link was specified
+  if (linkTarget) {
+    const anchor = createEl('a');
+    if (isWikilink) {
+      anchor.addClass('internal-link');
+      anchor.setAttr('data-href', linkTarget);
+      anchor.setAttr('href', linkTarget);
+      anchor.setAttr('data-tooltip-position', 'top');
+    } else {
+      anchor.addClass('external-link');
+      anchor.setAttr('href', linkTarget);
+      anchor.setAttr('target', '_blank');
+      anchor.setAttr('rel', 'noopener');
+      anchor.setAttr('aria-label', linkTarget);
+      anchor.setAttr('data-tooltip-position', 'top');
+    }
+    anchor.appendChild(newEl);
+    return anchor;
   }
   return newEl;
 }

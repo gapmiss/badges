@@ -8,6 +8,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 	- [Github styled badges](#Github)
 	- [Plain-text](#Plain-text)
 	- [custom](#custom)
+	- [Links](#links)
 	- [Usage in tables](#usage-in-tables)
 - [Installation](#Installation)
 - [CSS styles](#CSS)
@@ -189,6 +190,32 @@ For example, `[!!success]` displays as "Success" with a checkmark icon. This wor
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171541.png)
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171534.png)
+
+### Links
+
+Badges can be made clickable by adding a link using the `>>` syntax.
+
+###### syntax
+
+```markdown
+`[!!KEY:VAL>>LINK]`
+```
+
+| syntax | details |
+| ------ | ------- |
+| `>>` | link delimiter |
+| `LINK` | wikilink `[[Note]]` or external URL `https://...` |
+
+###### examples
+
+```markdown
+`[!!info:Documentation>>https://obsidian.md]`
+`[!!note:See also>>[[My Note]]]`
+`[!!tip:Jump to section>>[[My Note#Heading]]]`
+```
+
+> [!NOTE]
+> Links work with all badge types including custom badges.
 
 ### Usage in tables
 
