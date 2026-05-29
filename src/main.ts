@@ -198,7 +198,9 @@ function buildBadge(text: string): HTMLSpanElement {
         badgeType = (extras[1].startsWith('ghb>')) ? 'github' : 'github-success';
       } else {
         iconEl.addClass("inline-badge-extra");
-        iconEl.setText(badgeType.split("|")[1].trim());
+        const badgeTypeText = badgeType.split("|")[1].trim();
+        iconEl.setText(badgeTypeText);
+        iconEl.dataset.badgeType = badgeTypeText;
         attrType = 'text';
         badgeType = 'text';
       }
