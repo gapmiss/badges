@@ -242,6 +242,7 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
   // Wrap in anchor if link was specified
   if (linkTarget) {
     const anchor = createEl('a');
+    anchor.addClass('badge-link');
     if (isWikilink) {
       anchor.addClass('internal-link');
       anchor.setAttr('data-href', linkTarget);
