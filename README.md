@@ -264,6 +264,26 @@ body {
 }
 ```
 
+##### Styling plain-text badges by type
+
+Plain-text badges include a `data-badge-type` attribute containing the `KEY` value, enabling CSS targeting of specific badge types.
+
+###### examples
+
+```css
+/* Style all "Status" badges */
+.inline-badge-extra[data-badge-type="Status"] {
+	background-color: rgba(var(--color-green-rgb), .22);
+	color: rgba(var(--color-green-rgb), .88);
+}
+
+/* Style "Priority" badges differently */
+.inline-badge-extra[data-badge-type="Priority"] {
+	background-color: rgba(var(--color-red-rgb), .22);
+	color: rgba(var(--color-red-rgb), .88);
+}
+```
+
 ### Dataview
 
 View and copy example dataview queries: [badges-dataview](assets/badges-dataview.md)
