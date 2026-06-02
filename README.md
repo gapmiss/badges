@@ -23,7 +23,7 @@ Manually:
 
 or:
 
-1.  download `main.js`, `manifest.json` & `styles.css`
+1.  download `main.js`, `manifest.json` & `styles.css` from the latest [release](https://github.com/gapmiss/badges/releases/latest)
 2.  create a new folder `/path/to/vault/.obsidian/plugins/badges`
 3.  move all 3 files to `/path/to/vault/.obsidian/plugins/badges`
 4.  Settings > Community plugins > reload **Installed plugins**
