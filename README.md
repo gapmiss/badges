@@ -15,7 +15,7 @@ From Obsidian's settings or preferences:
 
 Manually:
 
-1. download the latest [release archive](https://github.com/gapmiss/badges/releases/download/1.1.0/badges-v1.1.0.zip)
+1. download the latest [release](https://github.com/gapmiss/badges/releases/latest) archive
 2. uncompress the downloaded archive
 3. move the `badges` folder to `/path/to/vault/.obsidian/plugins/` 
 4.  Settings > Community plugins > reload **Installed plugins**
