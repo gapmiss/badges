@@ -6,11 +6,9 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 
 ### Installation
 
+[Install from community.obsidian.md](https://community.obsidian.md/plugins/badges)
+
 From Obsidian's settings or preferences:
-
-1. [Install from community.obsidian.md](https://community.obsidian.md/plugins/badges)
-
-or:
 
 1. Community Plugins > Browse
 2. Search for "Badges"
