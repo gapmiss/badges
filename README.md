@@ -4,22 +4,9 @@
 
 A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://github.com/obsidianmd) which acts similarly to a key-value store(database) for querying via default search or [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin.
 
-- [Usage](#usage)
-	- [Github styled badges](#Github)
-	- [Plain-text](#Plain-text)
-	- [custom](#custom)
-	- [Links](#links)
-	- [Usage in tables](#usage-in-tables)
-- [Installation](#Installation)
-- [CSS styles](#CSS)
-- [Dataview plugin](#Dataview)
-- [Development](#Development)
-- [Notes](#Notes)
-
-
 ### Usage
 
-###### default syntax
+#### default syntax
 
 ```markdown
 `[!!KEY:VAL]`
@@ -30,7 +17,7 @@ A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://gi
 | `KEY`  | the type and name of the `ICON` |
 | `VAL`  | the value and text displayed    |
 
-###### shorthand syntax
+#### shorthand syntax
 
 For built-in badge types, you can omit the value and colon:
 
@@ -114,9 +101,9 @@ For example, `[!!success]` displays as "Success" with a checkmark icon. This wor
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171053.png)
 
-### Plain-text
+#### Plain-text
 
-###### syntax
+##### syntax
 
 ```markdown
 `[!!|KEY:VAL]`
@@ -139,9 +126,9 @@ For example, `[!!success]` displays as "Success" with a checkmark icon. This wor
 
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171713.png)
 
-### custom
+#### custom
 
-###### syntax
+##### syntax
 
 ```markdown
 `[!!|ICON|KEY:VAL|COLOR-RGB]`
@@ -191,11 +178,11 @@ For example, `[!!success]` displays as "Success" with a checkmark icon. This wor
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171541.png)
 ![](assets/Badges-demo-Obsidian-v1.3.7-20230709171534.png)
 
-### Links
+#### Links
 
 Badges can be made clickable by adding a link using the `>>` syntax.
 
-###### syntax
+##### syntax
 
 ```markdown
 `[!!KEY:VAL>>LINK]`
@@ -217,11 +204,11 @@ Badges can be made clickable by adding a link using the `>>` syntax.
 > [!NOTE]
 > Links work with all badge types including custom badges.
 
-### Usage in tables
+#### Usage in tables
 
 When using badges inside Markdown tables, the `|` pipe character conflicts with the table cell separator. To work around this, use escaped pipes `\|` instead of `|` in your badge syntax.
 
-###### syntax
+##### syntax
 
 ```markdown
 `[!!\|ICON\|KEY:VAL\|COLOR-RGB]`
@@ -243,7 +230,7 @@ When using badges inside Markdown tables, the `|` pipe character conflicts with 
 
 From Obsidian's settings or preferences:
 
-1. [Open in Obsidian.md](obsidian://show-plugin?id=badges)
+1. [Install from community.obsidian.md](https://community.obsidian.md/plugins/badges)
 
 or:
 
@@ -272,7 +259,7 @@ Custom `CSS` styles can be applied via CSS snippets. All colors and styles can
 
 See [CSS snippets - Obsidian Help](https://help.obsidian.md/Extending+Obsidian/CSS+snippets)
 
-##### variables
+#### variables
 
 ```css
 body {
@@ -291,7 +278,7 @@ body {
 }
 ```
 
-##### Styling plain-text badges by type
+#### Styling plain-text badges by type
 
 Plain-text badges include a `data-badge-type` attribute containing the `KEY` value, enabling CSS targeting of specific badge types.
 
