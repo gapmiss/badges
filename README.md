@@ -2,7 +2,34 @@
 
 ### Introduction
 
-A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://github.com/obsidianmd) which acts similarly to a key-value store(database) for querying via default search or [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin.
+A light-weight plugin for displaying inline "badges" in [Obsidian.md](https://github.com/obsidianmd).
+
+### Installation
+
+From Obsidian's settings or preferences:
+
+1. [Install from community.obsidian.md](https://community.obsidian.md/plugins/badges)
+
+or:
+
+1. Community Plugins > Browse
+2. Search for "Badges"
+
+Manually:
+
+1. download the latest [release archive](https://github.com/gapmiss/badges/releases/download/1.1.0/badges-v1.1.0.zip)
+2. uncompress the downloaded archive
+3. move the `badges` folder to `/path/to/vault/.obsidian/plugins/` 
+4.  Settings > Community plugins > reload **Installed plugins**
+5.  enable plugin
+
+or:
+
+1.  download `main.js`, `manifest.json` & `styles.css`
+2.  create a new folder `/path/to/vault/.obsidian/plugins/badges`
+3.  move all 3 files to `/path/to/vault/.obsidian/plugins/badges`
+4.  Settings > Community plugins > reload **Installed plugins**
+5.  enable plugin
 
 ### Usage
 
@@ -226,33 +253,6 @@ When using badges inside Markdown tables, the `|` pipe character conflicts with 
 > [!NOTE]
 > Badges without pipes (e.g. `[!!success:Done]`) work in tables without any changes.
 
-### Installation
-
-From Obsidian's settings or preferences:
-
-1. [Install from community.obsidian.md](https://community.obsidian.md/plugins/badges)
-
-or:
-
-1. Community Plugins > Browse
-2. Search for "Badges"
-
-Manually:
-
-1. download the latest [release archive](https://github.com/gapmiss/badges/releases/download/1.1.0/badges-v1.1.0.zip)
-2. uncompress the downloaded archive
-3. move the `badges` folder to `/path/to/vault/.obsidian/plugins/` 
-4.  Settings > Community plugins > reload **Installed plugins**
-5.  enable plugin
-
-or:
-
-1.  download `main.js`, `manifest.json` & `styles.css`
-2.  create a new folder `/path/to/vault/.obsidian/plugins/badges`
-3.  move all 3 files to `/path/to/vault/.obsidian/plugins/badges`
-4.  Settings > Community plugins > reload **Installed plugins**
-5.  enable plugin
-
 ### CSS
 
 Custom `CSS` styles can be applied via CSS snippets. All colors and styles can be over-written just the same.
@@ -299,6 +299,8 @@ Plain-text badges include a `data-badge-type` attribute containing the `KEY` val
 ```
 
 ### Dataview
+
+Badges can act similarly to a key-value store(database) for querying via default search or [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin.
 
 View and copy example dataview queries: [badges-dataview](assets/badges-dataview.md)
 
