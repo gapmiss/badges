@@ -96,17 +96,6 @@ const viewPlugin = ViewPlugin.fromClass(class {
 
     for (let n of lines) {
       const line = view.state.doc.line(n);
-      const startOfLine = line.from;
-      const endOfLine = line.to;
-      
-      let _currentLine = false;
-      currentSelections.forEach((r) => {
-        if (r.to >= startOfLine && r.from <= endOfLine) {
-          _currentLine = true;
-          return;
-        }
-      });
-
       let matches = Array.from(line.text.matchAll(REGEXP))
       for (const match of matches) {
         let add = true
