@@ -21,7 +21,7 @@ body {
 .inline-badge .gh-type {
 	display: inline-block;
 	font-size: var(--inline-badge-font-size);
-	padding-right: .5em;
+	padding-inline-end: .5em;
 	padding-top: .15em;
 }
 .inline-badge .inline-badge-extra {
@@ -46,7 +46,7 @@ body {
 	display: inline-block;
 	font-size: var(--inline-badge-font-size);
 	font-weight: inherit;
-	padding-right: 5px;
+	padding-inline-end: 5px;
 	padding-top: 2px;
 }
 .inline-badge[data-inline-badge="info"],
