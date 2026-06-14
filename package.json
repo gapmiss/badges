@@ -17,7 +17,7 @@
 	"devDependencies": {
 		"@types/node": "^16.11.6",
 		"@typescript-eslint/parser": "^8.59.4",
-		"esbuild": "^0.28.0",
+		"esbuild": "^0.28.1",
 		"eslint": "^9.39.4",
 		"eslint-plugin-obsidianmd": "^0.3.0",
 		"obsidian": "latest",
@@ -28,5 +28,8 @@
 	"dependencies": {
 		"@codemirror/state": "^6.0.0",
 		"@codemirror/view": "^6.0.0"
+	},
+	"allowScripts": {
+		"esbuild@0.28.1": true
 	}
 }
