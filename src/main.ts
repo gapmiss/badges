@@ -56,13 +56,19 @@ function buildPostProcessor(): MarkdownPostProcessor {
 }
 
 class BadgeWidget extends WidgetType {
+  readonly text: string;
+
   constructor(readonly badge: string[]) {
     super()
+    this.text = this.badge[0].substring(1).substring(this.badge[0].length-2,0);
+  }
+
+  eq(other: BadgeWidget): boolean {
+    return this.text === other.text;
   }
 
   toDOM(_view: EditorView): HTMLElement {
-    let text:string = this.badge[0].substring(1).substring(this.badge[0].length-2,0);
-      return buildBadge(text);
+    return buildBadge(this.text);
   }
 }
 
@@ -74,7 +80,9 @@ const viewPlugin = ViewPlugin.fromClass(class {
   }
 
   update(update: ViewUpdate) {
-    this.decorations = this.buildDecorations(update.view);
+    if (update.docChanged || update.viewportChanged || update.selectionSet) {
+      this.decorations = this.buildDecorations(update.view);
+    }
   }
 
   destroy() { }
@@ -110,7 +118,7 @@ const viewPlugin = ViewPlugin.fromClass(class {
           }
         })
         if (add) {
-          builder.add(from, to, Decoration.widget({ widget: new BadgeWidget(match) }))
+          builder.add(from, to, Decoration.replace({ widget: new BadgeWidget(match) }))
         }
       }
     }
