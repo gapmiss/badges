@@ -80,9 +80,12 @@ const viewPlugin = ViewPlugin.fromClass(class {
   }
 
   update(update: ViewUpdate) {
-    if (update.docChanged || update.viewportChanged || update.selectionSet) {
-      this.decorations = this.buildDecorations(update.view);
-    }
+    // Rebuild unconditionally. Gating on docChanged/viewportChanged/selectionSet
+    // misses the update where Obsidian turns live preview on, and once this
+    // plugin has reported Decoration.none for those ranges CodeMirror never
+    // redraws them — badges stay stuck as plain inline code. Widget churn is
+    // handled by BadgeWidget.eq() instead.
+    this.decorations = this.buildDecorations(update.view);
   }
 
   destroy() { }
