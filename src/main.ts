@@ -121,7 +121,12 @@ const viewPlugin = ViewPlugin.fromClass(class {
           }
         })
         if (add) {
-          builder.add(from, to, Decoration.replace({ widget: new BadgeWidget(match) }))
+          // inclusiveStart gives the decoration a negative startSide. Without it,
+          // when the editor is reconfigured on a live view (enabling/disabling a
+          // plugin), CodeMirror's redraw range starts inside the replaced span and
+          // it emits a continueWidget placeholder instead of the badge, leaving a
+          // blank gap. Decoration.widget used to avoid this via its -1e8 startSide.
+          builder.add(from, to, Decoration.replace({ widget: new BadgeWidget(match), inclusiveStart: true }))
         }
       }
     }
