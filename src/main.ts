@@ -1,41 +1,16 @@
-import { Plugin, MarkdownPostProcessor, MarkdownPostProcessorContext, setIcon, editorLivePreviewField } from 'obsidian'
+import { Plugin, MarkdownPostProcessor, setIcon, editorLivePreviewField } from 'obsidian'
 import { RangeSetBuilder } from "@codemirror/state"
 import { ViewPlugin, WidgetType, EditorView, ViewUpdate, Decoration, DecorationSet } from '@codemirror/view'
 import { BADGE_TYPES } from './constants';
 
 const REGEXP = /(`\[!!(.*?)\]`)/gm;
-const TAGS = 'code'
 
 export default class BadgesPlugin extends Plugin {
-  public postprocessor: MarkdownPostProcessor = (el: HTMLElement, _ctx: MarkdownPostProcessorContext) => {
-    const blockToReplace = el.querySelectorAll(TAGS)
-    if (blockToReplace.length === 0) return
-
-    function replace(node: Node) {
-      const childrenToReplace: Text[] = []
-      node.childNodes.forEach(child => {
-        if (child.nodeType === 3) {
-          childrenToReplace.push(child as Text)
-        }
-      })
-      childrenToReplace.forEach((child) => {
-        child.replaceWith(child);
-      })
-    }
-
-    blockToReplace.forEach(block => {
-      replace(block)
-    })
-  }
-
   async onload() {
     this.registerMarkdownPostProcessor(
 			buildPostProcessor()
 		);
     this.registerEditorExtension(viewPlugin)
-  }
-
-  onunload() {
   }
 }
 
@@ -43,12 +18,9 @@ function buildPostProcessor(): MarkdownPostProcessor {
 	return (el) => {
     el.findAll("code").forEach(
 			(code) => {
-				let text:string|undefined = code.innerText.trim();
-				if (text !== undefined && text.startsWith('[!!') && text.endsWith(']')) {
-          let newEl = buildBadge(text);
-          if (newEl !== undefined) {
-            code.replaceWith(newEl);
-          }
+				const text = code.innerText.trim();
+				if (text.startsWith('[!!') && text.endsWith(']')) {
+          code.replaceWith(buildBadge(text));
 				}
 			}
 		)
@@ -58,9 +30,9 @@ function buildPostProcessor(): MarkdownPostProcessor {
 class BadgeWidget extends WidgetType {
   readonly text: string;
 
-  constructor(readonly badge: string[]) {
+  constructor(badge: string[]) {
     super()
-    this.text = this.badge[0].substring(1).substring(this.badge[0].length-2,0);
+    this.text = badge[0].substring(1).substring(badge[0].length-2,0);
   }
 
   eq(other: BadgeWidget): boolean {
@@ -87,8 +59,6 @@ const viewPlugin = ViewPlugin.fromClass(class {
     // handled by BadgeWidget.eq() instead.
     this.decorations = this.buildDecorations(update.view);
   }
-
-  destroy() { }
 
   buildDecorations(view: EditorView): DecorationSet {
     if (!view.state.field(editorLivePreviewField)) {
@@ -164,7 +134,7 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
     content = content.slice(0, content.lastIndexOf('>>')).trim();
   }
   const parts = content.split(':');
-  let badgeType = parts[0].trim();
+  const badgeType = parts[0].trim();
   let badgeContent: string;
   // Support shorthand syntax for known types: [!!success] instead of [!!success:Success]
   if (parts.length < 2) {
@@ -202,7 +172,6 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
       newEl.appendChild(textEl);
     }
     newEl.appendChild(titleEl);
-    attrType = extras.join("|");
   } else {
     if (hasExtra) {
       if (extras[1].startsWith('ghb>') || extras[1].startsWith('ghs>')) {
@@ -212,16 +181,13 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
         iconEl.setAttr("aria-label", "Github");
         textEl.addClass("gh-type");
         textEl.setText(ghType);
-        iconEl.appendChild(textEl);
         attrType = (extras[1].startsWith('ghb>')) ? 'github' : 'github-success';
-        badgeType = (extras[1].startsWith('ghb>')) ? 'github' : 'github-success';
       } else {
         iconEl.addClass("inline-badge-extra");
         const badgeTypeText = badgeType.split("|")[1].trim();
         iconEl.setText(badgeTypeText);
         iconEl.dataset.badgeType = badgeTypeText;
         attrType = 'text';
-        badgeType = 'text';
       }
     } else {
       iconEl.addClass("inline-badge-icon");
