@@ -1,4 +1,7 @@
-export const BADGE_TYPES: [string, string, string][] = [
+// [type, label, icon]
+export type BadgeType = [string, string, string];
+
+export const BADGE_TYPES: BadgeType[] = [
 	["note", 'Note', 'lucide-pencil'],
 	["info", 'Info', 'lucide-info'],
 	["todo", 'Todo', 'lucide-check-circle-2'],

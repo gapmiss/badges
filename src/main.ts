@@ -140,11 +140,14 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
     }
     content = content.slice(0, content.lastIndexOf('>>')).trim();
   }
-  const parts = content.split(':');
-  const badgeType = parts[0].trim();
+  // Split on the first colon only, so content is free to contain colons of its
+  // own. Splitting on every colon silently dropped everything after the second.
+  const sepIndex = content.indexOf(':');
+  const badgeType = (sepIndex === -1 ? content : content.slice(0, sepIndex)).trim();
+  const rawContent = sepIndex === -1 ? null : content.slice(sepIndex + 1);
   let badgeContent: string;
   // Support shorthand syntax for known types: [!!success] instead of [!!success:Success]
-  if (parts.length < 2) {
+  if (rawContent === null) {
     const knownType = BADGE_TYPES.find((el) => el[0] === badgeType.toLowerCase());
     if (knownType) {
       badgeContent = knownType[1];
@@ -154,7 +157,7 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
       return newEl;
     }
   } else {
-    badgeContent = parts[1].trim();
+    badgeContent = rawContent.trim();
   }
   const extras = badgeType.split("|");
   const hasExtra = extras.length > 1;
@@ -163,7 +166,7 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
     attrType = 'customized';
     setIcon(iconEl, extras[1]);
     iconEl.setAttr("aria-label", extras[2]);
-    const details = parts[1].split("|");
+    const details = (rawContent ?? '').split("|");
     const title = details[0].trim();
     titleEl.addClass("inline-badge-title-inner");
     titleEl.setText(title);

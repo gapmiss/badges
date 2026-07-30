@@ -428,12 +428,12 @@ body {
 }
 
 .badge-picker-suggestion {
-  display: flex;
-  align-items: center;
-  gap: var(--size-2-3);
+	display: flex;
+	align-items: center;
+	gap: var(--size-2-3);
 }
 .badge-picker-icon {
-  display: flex;
-  align-items: center;
-  color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	color: var(--text-muted);
 }
