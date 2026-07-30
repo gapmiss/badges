@@ -251,6 +251,21 @@ When using badges inside Markdown tables, the `|` pipe character conflicts with 
 > [!NOTE]
 > Badges without pipes (e.g. `[!!success:Done]`) work in tables without any changes.
 
+#### Inserting badges
+
+The **Insert badge** command opens a searchable list of every badge type and inserts the one you pick at the cursor.
+
+| situation     | inserted                      | cursor                                   |
+| ------------- | ----------------------------- | ---------------------------------------- |
+| no selection  | `` `[!!KEY: ]` ``             | on the placeholder, type to add a label  |
+| text selected | `` `[!!KEY:selected text]` `` | after the badge                          |
+
+Typing replaces the placeholder. Arrow past it or click away to leave the badge icon only.
+
+Available from the command palette, or bind it to a hotkey via `Settings → Hotkeys`. Any plugin that triggers commands can use it too, such as [Editing Toolbar](https://github.com/PKM-er/obsidian-editing-toolbar).
+
+Pipes in the selected text are escaped automatically so the badge stays valid inside tables.
+
 ### CSS
 
 Custom `CSS` styles can be applied via CSS snippets. All colors and styles can be over-written just the same.
