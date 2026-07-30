@@ -59,42 +59,42 @@ body {
 	color: rgba(var(--color-purple-rgb),1);
 	background-color: rgba(var(--color-purple-rgb),.123);
 }
-.inline-badge[data-inline-badge="abstract"],  
-.inline-badge[data-inline-badge="summary"],  
+.inline-badge[data-inline-badge="abstract"],
+.inline-badge[data-inline-badge="summary"],
 .inline-badge[data-inline-badge="tldr"],
-.inline-badge[data-inline-badge="tip"],  
-.inline-badge[data-inline-badge="hint"],  
-.inline-badge[data-inline-badge="important"] {  
-  color: rgba(var(--color-cyan-rgb), 1);
-  background-color: rgba(var(--color-cyan-rgb), .133);
-}  
-.inline-badge[data-inline-badge="success"],  
-.inline-badge[data-inline-badge="check"],  
-.inline-badge[data-inline-badge="done"] {  
+.inline-badge[data-inline-badge="tip"],
+.inline-badge[data-inline-badge="hint"],
+.inline-badge[data-inline-badge="important"] {
+	color: rgba(var(--color-cyan-rgb), 1);
+	background-color: rgba(var(--color-cyan-rgb), .133);
+}
+.inline-badge[data-inline-badge="success"],
+.inline-badge[data-inline-badge="check"],
+.inline-badge[data-inline-badge="done"] {
 	color: rgba(var(--color-green-rgb), 1);
 	background-color: rgba(var(--color-green-rgb), .123);
-}  
-.inline-badge[data-inline-badge="question"],  
-.inline-badge[data-inline-badge="help"],  
-.inline-badge[data-inline-badge="faq"] {  
-  color: rgba(var(--color-yellow-rgb), 1);
-  background-color: rgba(var(--color-yellow-rgb), .123);
-}  
-.inline-badge[data-inline-badge="warning"],  
-.inline-badge[data-inline-badge="caution"],  
-.inline-badge[data-inline-badge="attention"] {  
+}
+.inline-badge[data-inline-badge="question"],
+.inline-badge[data-inline-badge="help"],
+.inline-badge[data-inline-badge="faq"] {
+	color: rgba(var(--color-yellow-rgb), 1);
+	background-color: rgba(var(--color-yellow-rgb), .123);
+}
+.inline-badge[data-inline-badge="warning"],
+.inline-badge[data-inline-badge="caution"],
+.inline-badge[data-inline-badge="attention"] {
 	color: rgba(var(--color-orange-rgb),1);
 	background-color: rgba(var(--color-orange-rgb),.123);
-}  
-.inline-badge[data-inline-badge="failure"],  
-.inline-badge[data-inline-badge="fail"],  
-.inline-badge[data-inline-badge="missing"],  
-.inline-badge[data-inline-badge="bug"],  
-.inline-badge[data-inline-badge="error"],  
-.inline-badge[data-inline-badge="danger"] {  
+}
+.inline-badge[data-inline-badge="failure"],
+.inline-badge[data-inline-badge="fail"],
+.inline-badge[data-inline-badge="missing"],
+.inline-badge[data-inline-badge="bug"],
+.inline-badge[data-inline-badge="error"],
+.inline-badge[data-inline-badge="danger"] {
 	color: rgba(var(--color-red-rgb),1);
 	background-color: rgba(var(--color-red-rgb),.123);
-}  
+}
 .inline-badge[data-inline-badge^="power"] {
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
@@ -206,7 +206,7 @@ body {
 	background-color: rgba(var(--badge-color),.177);
 }
 .inline-badge[data-inline-badge^="judgment"] {
-  --badge-color: 148,129,204;
+	--badge-color: 148,129,204;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.177);
 }
@@ -260,17 +260,17 @@ body {
 	background-color: rgba(var(--customize-badge-color),.177);
 }
 .inline-badge[data-inline-badge^="claim"] {
-  --badge-color: 214,139,71;
+	--badge-color: 214,139,71;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
 .inline-badge[data-inline-badge^="clue"] {
-  --badge-color: 206,144,66;
+	--badge-color: 206,144,66;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
 .inline-badge[data-inline-badge^="highlight"] {
-  --badge-color: 186,130,58;
+	--badge-color: 186,130,58;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
@@ -300,27 +300,27 @@ body {
 	background-color: rgba(var(--badge-color),.123);
 }
 .inline-badge[data-inline-badge^="profile"] {
-  --badge-color: 224,159,71;
+	--badge-color: 224,159,71;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
 .inline-badge[data-inline-badge^="notice"] {
-  --badge-color: 199,173,64;
+	--badge-color: 199,173,64;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
 .inline-badge[data-inline-badge^="witness"] {
-  --badge-color: 146,150,58;
+	--badge-color: 146,150,58;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
 .inline-badge[data-inline-badge^="attachment"] {
-  --badge-color: 146,150,58;
+	--badge-color: 146,150,58;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
 .inline-badge[data-inline-badge^="lightbulb"] {
-  --badge-color: 180,180,74;
+	--badge-color: 180,180,74;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
@@ -412,7 +412,7 @@ body {
 	background-color: rgba(var(--badge-color),.144);
 }
 .inline-badge[data-inline-badge^="brain"] {
-  --badge-color: 206,144,66;
+	--badge-color: 206,144,66;
 	color: rgba(var(--badge-color), 1);
 	background-color: rgba(var(--badge-color),.123);
 }
