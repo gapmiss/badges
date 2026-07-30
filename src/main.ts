@@ -181,7 +181,11 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
     if (textEl.getText() != "") {
       newEl.appendChild(textEl);
     }
-    newEl.appendChild(titleEl);
+    // An empty title span still contributes its padding-inline-end, which
+    // pushes an icon-only badge off centre
+    if (title.length) {
+      newEl.appendChild(titleEl);
+    }
   } else {
     if (hasExtra) {
       if (extras[1].startsWith('ghb>') || extras[1].startsWith('ghs>')) {
@@ -218,7 +222,9 @@ function buildBadge(text: string): HTMLSpanElement | HTMLAnchorElement {
     if (textEl.getText() != "") {
       newEl.appendChild(textEl);
     }
-    newEl.appendChild(titleEl);
+    if (badgeContent.length) {
+      newEl.appendChild(titleEl);
+    }
   }
   // Wrap in anchor if link was specified
   if (linkTarget) {
